@@ -69,7 +69,7 @@ function gurustump_register_show_metabox() {
 		// 'cmb_styles' => false, // false to disable the CMB stylesheet
 		// 'closed'     => true, // true to keep the metabox closed by default
 	) );
-
+/*
 	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Video Embed', 'cmb2' ),
 		'desc' => __( 'Enter embed code of your video. You can change the width and height in the embed code to 1280 by 720 if you want the video to start out larger. If this is filled in, it will override the "Video Link" below.', 'cmb2' ),
@@ -83,6 +83,15 @@ function gurustump_register_show_metabox() {
 		'id'			=> $prefix . 'video_link',
 		'type'		=> 'file',
 	) );
+*/
+
+	$cmb_show_box->add_field( array(
+		'name'		=> __( 'Video ID', 'cmb2' ),
+		'desc' => __( 'Input the ID of the YouTube video', 'cmb2' ),
+		'id'			=> $prefix . 'video_ID',
+		'type'		=> 'text',
+	) );
+
 	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Next Video', 'cmb2' ),
 		'desc'       => __( 'Select the video that will play when the show ends.', 'cmb2' ),
