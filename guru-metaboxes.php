@@ -107,6 +107,13 @@ function gurustump_register_show_metabox() {
 	) );
 
 	$cmb_show_box->add_field( array(
+		'name'		=> __( 'Show Gallery', 'cmb2' ),
+		'desc' => __( 'Insert a Wordpress Gallery for this show, especially for behind the scenes photos', 'cmb2' ),
+		'id'			=> $prefix . 'show_gallery',
+		'type'		=> 'wysiwyg',
+	) );
+
+	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Director', 'cmb2' ),
 		'desc'       => __( 'Enter the ID of a "Person", or click the search button to find it.', 'cmb2' ),
 		'id'			=> $prefix . 'director',
@@ -154,7 +161,7 @@ function gurustump_register_show_metabox() {
 		'type'       => 'text',
 	) );
 	$cmb_show_box->add_group_field( $cast_group_field_id, array(
-		'name'       => __( 'Castmember Name', 'cmb2' ),
+		'name'       => __( 'Castmember', 'cmb2' ),
 		'id'         => 'name',
 		'desc'       => __( 'Enter the ID of a "Person", or click the search button to find it.', 'cmb2' ),
 		'type'		=> 'post_search_text',
@@ -178,7 +185,7 @@ function gurustump_register_show_metabox() {
 		'type'       => 'text',
 	) );
 	$cmb_show_box->add_group_field( $crew_group_field_id, array(
-		'name'       => __( 'Crewmember Name', 'cmb2' ),
+		'name'       => __( 'Crewmember', 'cmb2' ),
 		'desc'       => __( 'Enter the ID of a "Person", or click the search button to find it.', 'cmb2' ),
 		'id'         => 'name',
 		'type'		=> 'post_search_text',
