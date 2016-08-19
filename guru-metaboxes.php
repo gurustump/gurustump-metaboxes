@@ -107,9 +107,15 @@ function gurustump_register_show_metabox() {
 	) );
 
 	$cmb_show_box->add_field( array(
+		'name'		=> __( 'Gallery Heading', 'cmb2' ),
+		'desc'       => __( 'The heading that will appear over the image gallery.', 'cmb2' ),
+		'id' 			=> $prefix . 'gallery_heading',
+		'type'		=> 'text',
+	) );
+	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Show Gallery', 'cmb2' ),
 		'desc' => __( 'Insert a Wordpress Gallery for this show, especially for behind the scenes photos', 'cmb2' ),
-		'id'			=> $prefix . 'show_gallery',
+		'id'			=> $prefix . 'gallery',
 		'type'		=> 'wysiwyg',
 	) );
 
