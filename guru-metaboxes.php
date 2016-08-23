@@ -93,6 +93,14 @@ function gurustump_register_show_metabox() {
 	) );
 
 	$cmb_show_box->add_field( array(
+		'name' => __( 'Offsite Video URL', 'cmb2' ),
+		'desc' => __( 'Enter the URL of where the movie can be viewed on the internet. Use only if the video is not available on YouTube, as this will override the Video', 'cmb2' ),
+		'id'   => $prefix . 'offsite_url',
+		'type' => 'text_url',
+		'protocols' => array('http', 'https'), // Array of allowed protocols
+	) );
+
+	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Next Video', 'cmb2' ),
 		'desc'       => __( 'Select the video that will play when the show ends.', 'cmb2' ),
 		'id' 			=> $prefix . 'next_video',
@@ -214,7 +222,7 @@ function gurustump_register_show_metabox() {
 	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Age Restriction', 'cmb2' ),
 		'id' 			=> $prefix . 'age_restriction',
-		'type'		=> 'text_small',
+		'type'		=> 'text',
 	) );
 
 	$cmb_show_box->add_field( array(
@@ -229,6 +237,40 @@ function gurustump_register_show_metabox() {
 		'name' => __( 'Link to film on the web', 'cmb2' ),
 		'desc' => __( 'Enter the URL of where the movie can be viewed on the internet', 'cmb2' ),
 		'id'   => $prefix . 'view_url',
+		'type' => 'text_url',
+		'protocols' => array('http', 'https'), // Array of allowed protocols
+	) );
+
+}
+
+add_action( 'cmb2_init', 'gurustump_register_person_metabox' );
+
+function gurustump_register_person_metabox() {
+	$prefix = '_gurustump_person_';
+	
+	$cmb_person_box = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Person Information - All fields are optional', 'cmb2' ),
+		'object_types'  => array( 'people'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_person_box->add_field( array(
+		'name' => __( 'IMDb URL', 'cmb2' ),
+		'desc' => __( 'Enter the URL of the IMDb page for this person', 'cmb2' ),
+		'id'   => $prefix . 'imdb_url',
+		'type' => 'text_url',
+		'protocols' => array('http', 'https'), // Array of allowed protocols
+	) );
+
+	$cmb_person_box->add_field( array(
+		'name' => __( 'Personal Home Page', 'cmb2' ),
+		'desc' => __( "Enter the URL of the person's home page", 'cmb2' ),
+		'id'   => $prefix . 'homepage_url',
 		'type' => 'text_url',
 		'protocols' => array('http', 'https'), // Array of allowed protocols
 	) );
