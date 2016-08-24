@@ -151,6 +151,22 @@ function gurustump_register_show_metabox() {
 		'post_type'=> 'people',
 	) );
 
+	$cmb_show_box->add_field( array(
+		'name'		=> __( 'Director of Photography', 'cmb2' ),
+		'desc'       => __( 'Enter the ID of a "Person", or click the search button to find it.', 'cmb2' ),
+		'id' 			=> $prefix . 'dp',
+		'type'		=> 'post_search_text',
+		'post_type'=> 'people',
+	) );
+
+	$cmb_show_box->add_field( array(
+		'name'		=> __( 'Editor', 'cmb2' ),
+		'desc'       => __( 'Enter the ID of a "Person", or click the search button to find it.', 'cmb2' ),
+		'id' 			=> $prefix . 'editor',
+		'type'		=> 'post_search_text',
+		'post_type'=> 'people',
+	) );
+
 	/*$cmb_show_box->add_field( array(
 		'name'		=> __( 'Cast', 'cmb2' ),
 		'desc'       => __( 'Enter the names of the actors here', 'cmb2' ),
