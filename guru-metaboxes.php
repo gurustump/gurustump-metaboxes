@@ -35,14 +35,28 @@ function gurustump_register_page_metabox() {
 
 	$cmb_page_box->add_field( array(
 		'name'		=> __( 'Index Gallery', 'cmb2' ),
-		'desc' => __( 'Insert a Wordpress Gallery to be used for the background images on the heading area of an index page', 'cmb2' ),
+		'desc' => __( 'Select images to be used for the background on the heading area of an index page', 'cmb2' ),
 		'id'			=> $prefix . 'index_gallery',
-		'type'		=> 'wysiwyg',
+		'type'		=> 'file_list',
+	) );
+
+	$cmb_page_box->add_field( array(
+		'name'		=> __( 'Index Submenu', 'cmb2' ),
+		'desc' => __( 'Enter the name of the Wordpress menu that you want to appear as a submenu on this page', 'cmb2' ),
+		'id'			=> $prefix . 'submenu',
+		'type'		=> 'text',
+	) );
+
+	$cmb_page_box->add_field( array(
+		'name'		=> __( 'File Embed', 'cmb2' ),
+		'desc' => __( "Use to reveal a single file to the front end from Wordpress' Media area. Used on index pages to load a video.", 'cmb2' ),
+		'id'			=> $prefix . 'file',
+		'type'		=> 'file',
 	) );
 
 	$cmb_page_box->add_field( array(
 		'name'             => __( 'Gallery Type', 'cmb2' ),
-		'desc'             => __( 'Choose whether this page contains a gallery of movies or images', 'cmb2' ),
+		'desc'             => __( "If any galleries appear on the page, this determines the gallery's layout between standard thumbs and movie thumbs", 'cmb2' ),
 		'id'               => $prefix . 'gallery_type',
 		'type'             => 'select',
 		'show_option_none' => false,
