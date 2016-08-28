@@ -307,4 +307,29 @@ function gurustump_register_person_metabox() {
 
 }
 
+add_action( 'cmb2_init', 'gurustump_register_equipment_metabox' );
+
+function gurustump_register_equipment_metabox() {
+	$prefix = '_gurustump_equipment_';
+	
+	$cmb_equipment_box = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Equipment Package Information - All fields are optional', 'cmb2' ),
+		'object_types'  => array( 'equipment'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_equipment_box->add_field( array(
+		'name'		=> __( 'Equipment Package Gallery', 'cmb2' ),
+		'desc' => __( 'Select images of this equipment package', 'cmb2' ),
+		'id'			=> $prefix . 'gallery',
+		'type'		=> 'file_list',
+	) );
+
+}
+
 ?>
