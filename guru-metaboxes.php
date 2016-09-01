@@ -48,6 +48,31 @@ function gurustump_register_page_metabox() {
 	) );
 
 	$cmb_page_box->add_field( array(
+		'name'		=> __( 'Custom Post Type Select', 'cmb2' ),
+		'desc' => __( "Select a custom post type the posts of which will be listed on this page", 'cmb2' ),
+		'id'			=> $prefix . 'post_type',
+		'type'		=> 'select',
+		'show_option_none' => true,
+		'default' => 'none',
+		'options' => array(
+			'equipment' => __( 'Equipment', 'cmb2' ),
+			'websites' => __( 'Websites', 'cmb2' ),
+		),
+	) );
+	$cmb_page_box->add_field( array(
+		'name'		=> __( 'Custom Post Type Heading', 'cmb2' ),
+		'desc' => __( 'Enter the heading for the above selected list of custom post type items', 'cmb2' ),
+		'id'			=> $prefix . 'post_type_heading',
+		'type'		=> 'text',
+	) );
+	$cmb_page_box->add_field( array(
+		'name'		=> __( 'Custom Post Type Description', 'cmb2' ),
+		'desc' => __( 'Enter an excerpt that will appear above the list of above selected custom post type items', 'cmb2' ),
+		'id'			=> $prefix . 'post_type_description',
+		'type'		=> 'wysiwyg',
+	) );
+
+	$cmb_page_box->add_field( array(
 		'name'		=> __( 'File Embed', 'cmb2' ),
 		'desc' => __( "Use to reveal a single file to the front end from Wordpress' Media area. Used on index pages to load a video.", 'cmb2' ),
 		'id'			=> $prefix . 'file',
