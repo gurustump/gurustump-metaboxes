@@ -357,4 +357,37 @@ function gurustump_register_equipment_metabox() {
 
 }
 
+add_action( 'cmb2_init', 'gurustump_register_website_metabox' );
+
+function gurustump_register_website_metabox() {
+	$prefix = '_gurustump_websites_';
+	
+	$cmb_website_box = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Website Information - All fields are optional', 'cmb2' ),
+		'object_types'  => array( 'websites'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_website_box->add_field( array(
+		'name' => __( 'Website URL', 'cmb2' ),
+		'desc' => __( "Enter the URL of the website", 'cmb2' ),
+		'id'   => $prefix . 'url',
+		'type' => 'text_url',
+		'protocols' => array('http', 'https'), // Array of allowed protocols
+	) );
+
+	$cmb_website_box->add_field( array(
+		'name'		=> __( 'Website Gallery', 'cmb2' ),
+		'desc' => __( 'Select images of this website', 'cmb2' ),
+		'id'			=> $prefix . 'gallery',
+		'type'		=> 'file_list',
+	) );
+
+}
+
 ?>
