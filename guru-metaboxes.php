@@ -90,6 +90,28 @@ function gurustump_register_page_metabox() {
 			'movie-gallery' 	=> __( 'Movie Gallery', 'cmb2' ),
 		),
 	) );
+	
+	$randomizer_group_field = $cmb_page_box->add_field( array(
+		'id'          => $prefix . 'randomizer',
+		'type'        => 'group',
+		'description' => __( 'Add list of items to be randomly selected from among', 'cmb2' ),
+		'options'     => array(
+			'group_title'   => __( 'Item {#}', 'cmb2' ), // {#} gets replaced by row number
+			'add_button'    => __( 'Add Another Item', 'cmb2' ),
+			'remove_button' => __( 'Remove Item', 'cmb2' ),
+			'sortable'      => true, // beta
+		),
+	) );
+	$cmb_page_box->add_group_field( $randomizer_group_field, array(
+		'name'       => __( 'Item Title', 'cmb2' ),
+		'id'         => 'title',
+		'type'       => 'text',
+	) );
+	$cmb_page_box->add_group_field( $randomizer_group_field, array(
+		'name'       => __( 'Item Likelihood Modifier', 'cmb2' ),
+		'id'         => 'likelihood_modifier',
+		'type'       => 'text_small',
+	) );
 
 }
 
@@ -144,7 +166,19 @@ function gurustump_register_show_metabox() {
 		'desc'       => __( 'Select the video that will play when the show ends.', 'cmb2' ),
 		'id' 			=> $prefix . 'next_video',
 		'type'		=> 'post_search_text',
-		'post_type'=> 'shows'
+		'post_type' => 'shows',
+		
+		/*
+		'type'		=> 'custom_attached_posts',
+		'options' => array(
+			'show_thumbnails' => true,
+			'filter_boxes'    => true,
+			'query_args'      => array(
+				'posts_per_page' => 10,
+				'post_type'      => 'shows',
+			),
+		),
+		*/
 	) );
 	$cmb_show_box->add_field( array(
 		'name'		=> __( 'Beginning of Credits Timecode', 'cmb2' ),
@@ -172,6 +206,16 @@ function gurustump_register_show_metabox() {
 		'id'			=> $prefix . 'director',
 		'type'		=> 'post_search_text',
 		'post_type'=> 'people',
+		
+		/* 'type'		=> 'custom_attached_posts',
+		'options' => array(
+			'show_thumbnails' => true,
+			'filter_boxes'    => true,
+			'query_args'      => array(
+				'posts_per_page' => 10,
+				'post_type'      => 'people',
+			),
+		), */
 	) );
 
 	$cmb_show_box->add_field( array(
@@ -389,5 +433,30 @@ function gurustump_register_website_metabox() {
 	) );
 
 }
+/*
+add_action( 'cmb2_init', 'gurustump_register_student_metabox' );
 
+function gurustump_register_student_metabox() {
+	$prefix = '_gurustump_student_';
+	
+	$cmb_person_box = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Student Information', 'cmb2' ),
+		'object_types'  => array( 'students'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_person_box->add_field( array(
+		'name' => __( 'Likelihood Modifier', 'cmb2' ),
+		'desc' => __( 'This number will be updated every time the randomizer is run. Do not edit it unless you know what you are doing.', 'cmb2' ),
+		'id'   => $prefix . 'likelihood_modifier',
+		'type' => 'text_small',
+	) );
+
+}
+*/
 ?>
